@@ -1,0 +1,22 @@
+table{
+    margin:auto;
+    margin-top: 50px;
+}
+tr{
+    width:400px;
+    border: 1px solid ;
+}
+thead th{
+    width:200px;
+    border: 1px solid;
+}
+thead td  {
+    width:100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+td a{
+    color:blue;
+    text-decoration: underline;
+}
