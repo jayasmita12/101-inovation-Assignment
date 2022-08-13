@@ -2,32 +2,41 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import axios from "axios"
-// import "../styles/foodlist.css"
-import { Box, Center, SimpleGrid } from '@chakra-ui/react'
+import { Box, Button, Center, Heading, Select, SimpleGrid, Text,option} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import data from "../db.json"
 
 export const FoodList = () => {
     const [fooddata, setfoodData] = useState(data)
+    const [sortType,setSort]=useState("albums")
 
-    // useEffect(() => {
-    //     axios("http://localhost:8080/foodlist", {
-    //         method: "get"
-    //     })
-    //         .then((res) => {
-    //             setfoodData(res.data)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         })
-    //}, [])
+    useEffect(()=>{
+        const sortArray=type=>{
+            const types={
+                energy_100g:"energy_100g",
+                fat_100g:"fat_100g"
+            };
+            const sortProperty = types[type] 
+            const sorted = [...data].sort((a,b)=>b[sortProperty]-a[sortProperty])
+            setfoodData(sorted)
+        }
+        sortArray(sortType)
+    },[sortType])
+
     return (
         <div>
-            <h1>FoodList</h1>
+            <Heading>FoodList</Heading>
+            <Center>
+            <Select w={"150px"} onChange={(e)=>setSort(e.target.value)}  placeholder='Select option'>
+                <option value="energy_100g">Energy</option>
+                <option value="fat_100g" >Fat</option>
+            </Select>
+            </Center>
+
             {fooddata.map((e) => {
                 return (
-                    <Box>
-                        <Link to={`/${e.code}`}><SimpleGrid minChildWidth='100px'style={{margin:"20px"}} spacing='10px' key={e.code}>
+                    <Box key={e.code}>
+                        <Link to={`/${e.code}`}><SimpleGrid minChildWidth='100px'style={{margin:"20px"}} spacing='10px'>
                             <Box className='img'>
                                 <Center>
                                     <img src={require("../icon.png")} alt="" />
@@ -35,7 +44,7 @@ export const FoodList = () => {
                             </Box>
                             <Box className='product'>
                                 <Center>
-                                    <p>{e.product_name} {`(${e.generic_name})`}</p>
+                                    <Text>{e.product_name} {`(${e.generic_name})`}</Text>
                                 </Center>
                             </Box>
                         </SimpleGrid>

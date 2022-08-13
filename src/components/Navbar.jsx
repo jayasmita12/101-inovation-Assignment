@@ -7,7 +7,6 @@ import {
     Stack,
     Collapse,
     Icon,
-    Link,
     Popover,
     PopoverTrigger,
     PopoverContent,
@@ -21,6 +20,7 @@ import {
     ChevronDownIcon,
     ChevronRightIcon,
   } from '@chakra-ui/icons';
+  import { Link } from 'react-router-dom';
   
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
@@ -28,7 +28,7 @@ import {
     return (
       <Box>
         <Flex
-          bg={useColorModeValue('white', 'gray.800')}
+          bg={useColorModeValue('rgb(161,195,153)', 'gray.800')}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           py={{ base: 2 }}
@@ -68,14 +68,14 @@ import {
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-            <Button
+            <Link to="/fav"><Button
               as={'a'}
               fontSize={'sm'}
               fontWeight={400}
               variant={'link'}
               href={'#'}>
-              Sign In
-            </Button>
+              Favourites
+            </Button></Link>
             <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
@@ -86,7 +86,7 @@ import {
               _hover={{
                 bg: 'pink.300',
               }}>
-              Sign Up
+              Sign In
             </Button>
           </Stack>
         </Flex>
