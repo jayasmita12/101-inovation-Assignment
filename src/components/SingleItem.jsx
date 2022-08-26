@@ -21,23 +21,31 @@ import { FavouriteFood } from './FavouriteFood'
 
 
 export const SingleItem = () => {
-    const [items, setItem] = useState(data)
+    const [items, setItem] = useState([])
     const [store, setStore] = useState({})
     const { Id } = useParams()
-    const [fav,setFav]=useState([])
 
     let singleProduct;
     useEffect(() => {
-        filtering(items, Id)
+       axios.get("https://run.mocky.io/v3/5ff1e1a8-b652-40c4-8c1f-5fb701ece088")
+        .then(res=>{
+            setItem(res.data)
+            filtering(res.data, Id)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
     }, [singleProduct])
+
     function filtering(items, Id) {
         singleProduct = items.find(e => e.Id == Id)
         setStore(singleProduct)
     }
-    // console.log(store)
+    
+    
     const favouriteFood=()=>{
-        fav.push(store)
-        console.log(fav)
+        // fav.push(store)
+        // console.log(fav)
     }
 
 
