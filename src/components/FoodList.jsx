@@ -32,7 +32,7 @@ export const FoodList = () => {
                 <option value="fat_100g" >Fat</option>
             </Select>
             </Center>
-
+            
             {fooddata.map((e) => {
                 return (
                     <Box key={e.code}>
