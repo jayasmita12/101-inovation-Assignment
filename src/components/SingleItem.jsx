@@ -62,43 +62,58 @@ export const SingleItem = () => {
 
             <div>
                 <table>
-                   
+                   <tbody>
                     <tr>
                         <thead>
                             <th>Per_Serve_Size</th>
                             <td>{store.Per_Serve_Size}</td>
                         </thead>
                     </tr>
+                    </tbody>
+
+                    <tbody>
                     <tr>
                         <thead>
                             <th>Energy_kCal</th>
                             <td>{store.Energy_kCal}</td>
                         </thead>
                     </tr>
+                    </tbody>
+
+
+                    <tbody>
                     <tr>
                         <thead>
                             <th>Total_fat_g</th>
                             <td>{store.Total_fat_g}</td>
                         </thead>
                     </tr>
+                    </tbody>
+
+                    <tbody>
                     <tr>
                         <thead>
                             <th>Sat_Fat_g</th>
                             <td>{store.Sat_Fat_g}</td>
                         </thead>
                     </tr>
+                    </tbody>
+                    <tbody>
                     <tr>
                         <thead>
                             <th>Trans_fat_g</th>
                             <td>{store.Trans_fat_g}</td>
                         </thead>
                     </tr>
+                    </tbody>
+                    <tbody>
                     <tr>
                         <thead>
                             <th>Cholesterols_mg</th>
                             <td>{store.Cholesterols_mg}</td>
                         </thead>
                     </tr>
+                    </tbody>
                 </table>
             </div>
             <Center style={{ marginTop: "40px",display:"flex",gap:"30px" }}>

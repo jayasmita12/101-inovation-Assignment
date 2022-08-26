@@ -69,7 +69,7 @@ import {
             direction={'row'}
             spacing={6}>
             <Link to="/fav"><Button
-              as={'a'}
+              
               fontSize={'sm'}
               fontWeight={400}
               variant={'link'}

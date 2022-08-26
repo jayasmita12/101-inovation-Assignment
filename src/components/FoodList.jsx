@@ -4,10 +4,9 @@ import { useState } from 'react'
 import axios from "axios"
 import { Box, Button, Center, Heading, Select, SimpleGrid, Text,option} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import data from "../db.json"
 
 export const FoodList = () => {
-    const [fooddata, setfoodData] = useState(data)
+    const [fooddata, setfoodData] = useState([])
     const [sortType,setSort]=useState("albums")
 
     useEffect(()=>{
@@ -17,11 +16,22 @@ export const FoodList = () => {
                 Protein_g:"Protein_g"
             };
             const sortProperty = types[type] 
-            const sorted = [...data].sort((a,b)=>b[sortProperty]-a[sortProperty])
+            const sorted = [...fooddata].sort((a,b)=>b[sortProperty]-a[sortProperty])
             setfoodData(sorted)
         }
         sortArray(sortType)
     },[sortType])
+
+    useEffect(()=>{
+        axios.get("https://run.mocky.io/v3/5ff1e1a8-b652-40c4-8c1f-5fb701ece088")
+        .then(res=>{
+            setfoodData(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    },[])
+    
 
     return (
         <div>
